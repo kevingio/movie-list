@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import useAxios from "@utils/useAxios";
+import MovieContext from "@contexts/MovieContext";
 
 import MovieCard from "@components/MovieCard";
 import SearchInput from "@components/SearchInput";
@@ -11,9 +12,10 @@ import Typography from "@components/Typography";
 const Movie = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { presetMovie } = useContext(MovieContext);
   const [page, setPage] = useState(1);
 
-  const { data, loading, refetch } = useAxios(searchParams.get('search'), page);
+  const { data, loading, refetch } = useAxios(searchParams.get('search') || presetMovie.slug, page);
 
   const handleClickDetail = ({ id }) => () => {
     navigate(`/movies/${id}`);
@@ -23,12 +25,16 @@ const Movie = () => {
     <>
       <FlexLayout padding="16px" margin="32px 0 0 0" direction="column">
         <SearchInput placeholder="Type movie title..." />
-        <Typography tag="display">
-          Batmann
-        </Typography>
-        <Typography>
-          DC marvel
-        </Typography>
+        {presetMovie.slug ? (
+          <>
+            <Typography tag="display">
+              {presetMovie.title}
+            </Typography>
+            <Typography>
+              {presetMovie.subtitle}
+            </Typography>
+          </>
+        ) : null}
       </FlexLayout>
       <FlexLayout wrap="wrap" padding="0 16px 0 0">
         {!loading ? data.map(item => (

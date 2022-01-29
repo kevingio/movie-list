@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { css } from '@emotion/css';
 import { N30, N50, baseBlack } from '@utils/colors';
 
 const fontStyle = (style) => style ? `font-style: ${style};` : '';
@@ -99,7 +98,7 @@ export const StyledCaption = styled('p')(
   margin: ${props.margin || '0px 0px 10px 0'};
   cursor: ${props.link ? 'pointer' : 'inherit'};
   display: ${props.display || 'block'};
-  padding: ${props.padding || 'auto'};
+  padding: ${props.padding || 'inherit'};
   float: ${props.float || 'none'};
   cursor: ${props.link ? 'pointer' : 'inherit'};
   white-space: ${props.whiteSpace || 'normal'};
@@ -108,7 +107,7 @@ export const StyledCaption = styled('p')(
 `,
 );
 
-export const bodyCss = (props) => css`
+export const StyledBody = styled('p')(props => `
   line-height: 24px;
   font-size: ${props.fontSize || '14px'};
   color: ${props.color || baseBlack};
@@ -116,11 +115,8 @@ export const bodyCss = (props) => css`
   cursor: ${props.link ? 'pointer' : 'inherit'};
   white-space: ${props.whiteSpace || 'normal'};
   display: ${props.display || 'initial'};
-  text-decoration: ${props.textDecoration || 'auto'}
+  text-decoration: ${props.textDecoration || 'auto'};
+  margin: ${props.margin || '0px 0px 10px 0'};
   ${fontStyle(props.fontStyle)};
   ${elipsisProps(props)};
-`;
-
-export const StyledBody = styled.p`
-  ${bodyCss};
-`;
+`);

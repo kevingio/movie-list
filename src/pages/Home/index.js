@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useAxios from "@utils/useAxios";
+import { masterMovies } from "@constants";
+import MovieContext from '@contexts/MovieContext';
 
 import MovieList from "@components/MovieList";
 
 const HomeComponent = () => {
   const navigate = useNavigate();
+  const { setPresetMovie } = useContext(MovieContext);
   const { data: batmanMovies, loading: batmanLoading } = useAxios('batman');
-  const { data: supermanMovies, loading: supermanLoading } = useAxios('batman');
+  const { data: supermanMovies, loading: supermanLoading } = useAxios('superman');
 
-  const handleClickAll = (qs) => {
-    navigate({
-      pathname: "movies",
-      search: `?search=${qs}`
-    });
-  }
+  const handleClickAll = (item) => {
+    setPresetMovie(item);
+    navigate('movies');
+  };
+
+  const handleClickDetail = ({ id }) => {
+    navigate(`movies/${id}`);
+  };
 
   return (
     <>
-      <MovieList movies={batmanMovies} title="Superman Movies" subtitle="DC marvel" onClickAll={() => handleClickAll('superman')} onClickDetail={() => { }} />
-      <MovieList movies={supermanMovies} title="Batman Movies" subtitle="DC marvel" onClickAll={() => handleClickAll('batman')} onClickDetail={() => { }} />
+      <MovieList movies={supermanMovies} loading={supermanLoading} title={masterMovies[0].title} subtitle={masterMovies[0].subtitle} onClickAll={() => handleClickAll(masterMovies[0])} onClickDetail={handleClickDetail} />
+      <MovieList movies={batmanMovies} loading={batmanLoading} title={masterMovies[1].title} subtitle={masterMovies[1].subtitle} onClickAll={() => handleClickAll(masterMovies[1])} onClickDetail={handleClickDetail} />
     </>
   );
 };

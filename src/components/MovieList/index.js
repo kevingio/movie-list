@@ -26,7 +26,7 @@ const MovieList = ({
           </FlexColumn>
         </FlexLayout>
         <FlexColumn width="calc(100% - 100px)">
-          <Typography caption>
+          <Typography margin="0 0 16px 0">
             {subtitle}
           </Typography>
         </FlexColumn>
@@ -39,7 +39,7 @@ const MovieList = ({
         >
         {movies.map(item => (
           <FlexColumn key={item.id}>
-            <MovieCard title={item.title} year={item.year} poster={item.poster} onClick={onClickDetail} width="180px" />
+            <MovieCard title={item.title} year={item.year} poster={item.poster} onClick={() => onClickDetail(item)} width="180px" />
           </FlexColumn>
         ))}
         </FlexLayout>

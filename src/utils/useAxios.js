@@ -13,7 +13,6 @@ const useAxios = (search = 's', page = 1) => { // default search because omdbapi
       }
     });
     const data = result.data;
-    console.log('d', data)
     const normalizedData = data.Search.map(item => ({
       id: item.imdbID,
       title: item.Title,

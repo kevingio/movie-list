@@ -23,8 +23,8 @@ export const movieTitle = css`
 `;
 
 export const movieSubtitle = css`
-	font-size: 12px;
-	line-height: 16px;
+	font-size: 14px;
+	line-height: 18px;
 	line-spacing: 0.2;
 	color: #2f3640;
 	margin: 0;
