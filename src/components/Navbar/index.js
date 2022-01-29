@@ -1,7 +1,9 @@
 import React from "react";
 
+import { wrapper } from "./styles";
+
 const Navbar = () => {
-  return <>This is NAVBAR</>;
+  return <div className={wrapper}>This is NAVBAR</div>;
 };
 
 export default Navbar;

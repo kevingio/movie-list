@@ -1,5 +1,4 @@
 import { css } from '@emotion/css';
-import { mainBackground } from './utils/colors';
 import { injectGlobal } from '@emotion/css'
 
 injectGlobal`

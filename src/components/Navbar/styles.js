@@ -1,7 +1,10 @@
-import React from "react";
+import { css } from "@emotion/css";
 
-const Navbar = () => {
-  return <>This is NAVBAR</>;
-};
-
-export default Navbar;
+export const wrapper = css`
+	background: white;
+	padding: 16px;
+	text-align: center;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 24px;
+`;

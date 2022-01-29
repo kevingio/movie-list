@@ -37,7 +37,11 @@ const MovieList = ({
         maxWidth="500px"
         whiteSpace="nowrap"
         >
-        {movies.map(item => <MovieCard key={item.id} onClick={onClickDetail} />)}
+        {movies.map(item => (
+          <FlexColumn key={item.id}>
+            <MovieCard title={item.title} year={item.year} poster={item.poster} onClick={onClickDetail} width="180px" />
+          </FlexColumn>
+        ))}
         </FlexLayout>
     </FlexLayout>
   )

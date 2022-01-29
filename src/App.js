@@ -6,6 +6,7 @@ import {
 
 import Navbar from '@components/Navbar';
 import Home from '@pages/Home';
+import Movie from "@pages/Movie";
 
 import { container, mobileContainer } from './styles';
 
@@ -17,6 +18,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movie />} />
           </Routes>
         </Router>
       </div>

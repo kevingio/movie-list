@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { css as dynamicCss } from '@emotion/react';
+import { css } from '@emotion/css';
 import { N30, N50, baseBlack } from '@utils/colors';
 
 const fontStyle = (style) => style ? `font-style: ${style};` : '';
@@ -108,7 +108,7 @@ export const StyledCaption = styled('p')(
 `,
 );
 
-export const bodyCss = (props) => dynamicCss`
+export const bodyCss = (props) => css`
   line-height: 24px;
   font-size: ${props.fontSize || '14px'};
   color: ${props.color || baseBlack};

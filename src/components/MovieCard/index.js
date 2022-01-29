@@ -1,18 +1,38 @@
 import React from "react";
+import { string, func } from 'prop-types';
 
-import { cardWrapper, movieTitle, movieSubtitle } from "./styles";
+import { CardWrapper, movieTitle, movieSubtitle, movieImage } from "./styles";
 
-const MovieCard = () => {
+const MovieCard = ({
+  title,
+  poster,
+  year,
+  onClick,
+  width,
+}) => {
   return (
-    <div className={cardWrapper}>
+    <CardWrapper width={width} onClick={onClick}>
+      <img src={poster} className={movieImage} alt={title} />
       <h2 className={movieTitle}>
-        Superman is Dead
+        {title}
       </h2>
       <p className={movieSubtitle}>
-        2020
+        {year}
       </p>
-    </div>
+    </CardWrapper>
   );
+};
+
+MovieCard.propTypes = {
+  title: string.isRequired,
+  poster: string.isRequired,
+  year: string.isRequired,
+  onClick: func.isRequired,
+  width: string.isRequired
+};
+
+MovieCard.defaultProps = {
+  width: '100%'
 };
 
 export default MovieCard;

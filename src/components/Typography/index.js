@@ -19,31 +19,31 @@ const Typography = forwardRef(function Typography(props, ref) {
         );
     }
 
-    if (tag == 'display') {
+    if (tag === 'display') {
         return <StyledDisplay {...sanitizedProps} ref={ref}>{children}</StyledDisplay>
     }
 
-    if (tag == 'h1') {
+    if (tag === 'h1') {
         return <StyledH1 {...sanitizedProps} ref={ref}>{children}</StyledH1>
     }
 
-    if (tag == 'h2') {
+    if (tag === 'h2') {
         return <StyledH2 {...sanitizedProps} ref={ref}>{children}</StyledH2>
     }
 
-    if (tag == "h3") {
+    if (tag === "h3") {
         return <StyledH3 {...sanitizedProps} ref={ref}>{children}</StyledH3>
     }
 
-    if (tag == 'h4') {
+    if (tag === 'h4') {
         return <StyledH4 {...sanitizedProps} ref={ref}>{children}</StyledH4>
     }
 
-    if (tag == 'h5') {
+    if (tag === 'h5') {
         return <h5 {...sanitizedProps} ref={ref}>{children}</h5>
     }
 
-    if (tag == 'h6') {
+    if (tag === 'h6') {
         return <h6 {...sanitizedProps} ref={ref}>{children}</h6>
     }
 
