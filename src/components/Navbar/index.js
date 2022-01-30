@@ -12,10 +12,10 @@ const Navbar = () => {
     <div className={wrapper}>
       {pathname !== '/' ? (
         <div className={backButtonWrapper} onClick={() => navigate('/')}>
-          <span className={backButton} /> Back Home
+          <span className={backButton} />
         </div>
       ) : null}
-      <FlexLayout align="center" justify="space-between" width={pathname !== '/' ? 'calc(100% - 130px)' : '100%'}>
+      <FlexLayout align="center" justify="space-between" width="100%">
         <span className={navbarTitle}>
           TIX Studio XXII
         </span>

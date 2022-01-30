@@ -85,12 +85,12 @@ const Movie = () => {
           <FlexLayout width="100%" padding="0 16px 16px 16px">
             {page > 1 && (
               <FlexColumn width="100%" margin="0 16px 0 0">
-                <Button outline block secondary onClick={() => setPage(prevPage => prevPage - 1)}>Prev</Button>
+                <Button outline block secondary loading={loading} onClick={() => setPage(prevPage => prevPage - 1)}>Prev</Button>
               </FlexColumn>
             )}
             {pageInfo.maxPage > page && (
               <FlexColumn width="100%">
-                <Button outline block primary onClick={() => setPage(prevPage => prevPage + 1)}>Next</Button>
+                <Button outline block primary loading={loading} onClick={() => setPage(prevPage => prevPage + 1)}>Next</Button>
               </FlexColumn>
             )}
           </FlexLayout>

@@ -11,7 +11,6 @@ export const backButtonWrapper = css`
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-	width: 130px;
 `;
 
 export const backButton = css`
