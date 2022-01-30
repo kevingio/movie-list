@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import loadable from "@loadable/component";
 
-import MovieCard from "@components/MovieCard";
 import { FlexLayout, FlexColumn } from "@components/Grid";
 import Typography from "@components/Typography";
 import { LC_MOVIE_KEY } from '@constants';
+
+const MovieCard = loadable(() => import(/* webpackChunkName: "movie-card" */ '@components/MovieCard'));
 
 const Movie = () => {
   const navigate = useNavigate();

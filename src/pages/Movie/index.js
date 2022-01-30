@@ -1,15 +1,17 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+import loadable from "@loadable/component";
 import useAxios from "@utils/useAxios";
 import MovieContext from "@contexts/MovieContext";
 
 import Shimmer from "@components/Shimmer";
-import MovieCard from "@components/MovieCard";
 import SearchInput from "@components/SearchInput";
 import { FlexLayout, FlexColumn } from "@components/Grid";
 import Typography from "@components/Typography";
 import Button from "@components/Button";
+
+const MovieCard = loadable(() => import(/* webpackChunkName: "movie-card" */ '@components/MovieCard'));
 
 const Placeholder = () => {
   const data = Array(3).fill(true);

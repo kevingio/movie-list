@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import loadable from "@loadable/component";
 import useAxios from "@utils/useAxios";
 import { masterMovies } from "@constants";
 import MovieContext from '@contexts/MovieContext';
 import SearchInput from "@components/SearchInput";
 
-import MovieList from "@components/MovieList";
 import { FlexColumn } from "@components/Grid";
+
+const MovieList = loadable(() => import(/* webpackChunkName: "movie-list" */ '@components/MovieList'));
 
 const HomeComponent = () => {
   const navigate = useNavigate();

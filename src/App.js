@@ -4,15 +4,18 @@ import {
   Route,
 } from "react-router-dom";
 
+import loadable from "@loadable/component";
+
 import Navbar from '@components/Navbar';
-import Home from '@pages/Home';
-import Movie from "@pages/Movie";
-import MovieDetail from "@pages/MovieDetail";
-import MyMovie from "@pages/MyMovie";
 
 import { MovieContextProvider } from '@contexts/MovieContext';
 
 import { container, mobileContainer } from './styles';
+
+const Home = loadable(() => import(/* webpackChunkName: "homepage" */ '@pages/Home'));
+const Movie = loadable(() => import(/* webpackChunkName: "movie" */ '@pages/Movie'));
+const MovieDetail = loadable(() => import(/* webpackChunkName: "movie-detail" */ '@pages/MovieDetail'));
+const MyMovie = loadable(() => import(/* webpackChunkName: "my-movie" */ '@pages/MyMovie'));
 
 function App() {
   return (
