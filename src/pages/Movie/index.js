@@ -13,7 +13,7 @@ const Movie = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { presetMovie } = useContext(MovieContext);
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
   const [search, setSearch] = useState('');
   const qsSearch = searchParams.get('search');
 

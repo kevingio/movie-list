@@ -7,7 +7,7 @@ const useAxios = ({
   keyword = 'superman', searchType = 'keyword', page = 1
 }) => { // default keyword because omdbapi cannot fetch all data
   // if search type is keyword, it means api will return array, else it will return object
-  const [data, setData] = useState(searchType == 'keyword' ? [] : {});
+  const [data, setData] = useState(searchType === 'keyword' ? [] : {});
   const [loading, setLoading] = useState(true)
 
   const fetchData = useCallback(async () => {
