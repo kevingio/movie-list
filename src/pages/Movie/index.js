@@ -70,7 +70,7 @@ const Movie = () => {
         )}
         {!loading ? data.map(item => (
           <FlexColumn width="50%" key={item.id} margin="0 0 16px 0">
-            <MovieCard title={item.title} year={item.year} poster={item.poster} onClick={handleClickDetail(item)} />
+            <MovieCard title={item.title} year={item.year} poster={item.poster} type={item.type} onClick={handleClickDetail(item)} />
           </FlexColumn>
         )) : <p>Loading</p>}
       </FlexLayout>

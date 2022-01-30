@@ -1,7 +1,7 @@
 import React from "react";
 import { string, func } from 'prop-types';
 
-import { CardWrapper, movieTitle, movieSubtitle, movieImage } from "./styles";
+import { CardWrapper, movieTitle, movieSubtitle, movieImage, chipMovieType } from "./styles";
 import Button from "@components/Button";
 
 const MovieCard = ({
@@ -15,13 +15,16 @@ const MovieCard = ({
 }) => {
   return (
     <CardWrapper width={width}>
+      <span className={chipMovieType}>
+        {type}
+      </span>
       <div onClick={onClick}>
         <img src={poster} className={movieImage} alt={title} />
         <h2 className={movieTitle}>
           {title}
         </h2>
         <p className={movieSubtitle}>
-          {type} ({year})
+          {year}
         </p>
       </div>
       {onActionClick ? <Button dense secondary block onClick={onActionClick}>Remove</Button> : null}

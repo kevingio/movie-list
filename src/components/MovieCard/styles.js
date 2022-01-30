@@ -2,7 +2,7 @@ import { css } from '@emotion/css';
 import styled from '@emotion/styled';
 
 import { txtEllipsis } from '@utils/styles';
-import { N50, boxShadowMain } from '@utils/colors';
+import { N50, G50, boxShadowMain } from '@utils/colors';
 
 export const CardWrapper = styled('div')(props => `
   padding: 8px;
@@ -39,6 +39,14 @@ export const movieImage = css`
 	margin-bottom: 4px;
 `;
 
-export const chip = css`
+export const chipMovieType = css`
 	position: absolute;
+	top: 20px;
+	right: 20px;
+	padding: 6px 10px;
+	border-radius: 50px;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	background: ${G50};
 `;
