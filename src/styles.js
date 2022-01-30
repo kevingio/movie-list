@@ -9,14 +9,20 @@ injectGlobal`
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
   }
+
+  *::-webkit-scrollbar { 
+    display: none; 
+  }
 `;
 
 export const container = css`
   background: ${N5};
+  overflow-x: auto;
 `;
 
 export const mobileContainer = css`
   width: 100%;
+  min-width: 320px;
   max-width: 500px;
   display: block;
   margin: auto;

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import useAxios from "@utils/useAxios";
@@ -16,6 +16,7 @@ const Movie = () => {
   const [page] = useState(1);
   const [search, setSearch] = useState('');
   const qsSearch = searchParams.get('search');
+  const didMountRef = useRef();
 
   const { data, loading } = useAxios({
     keyword: qsSearch || presetMovie.slug,
@@ -34,11 +35,12 @@ const Movie = () => {
   };
 
   useEffect(() => {
-    if (!qsSearch) {
+    if (!qsSearch && !didMountRef.current) {
+      didMountRef.current = true;
       searchParams.set('search', presetMovie.slug);
       navigate({
         search: searchParams.toString()
-      })
+      });
     }
   }, [navigate, presetMovie.slug, searchParams, qsSearch]);
 
@@ -49,7 +51,6 @@ const Movie = () => {
           placeholder="Type movie title..."
           value={search}
           onChange={e => setSearch(e.target.value)}
-          onClick={handleSubmit}
           onSubmit={handleSubmit}
           onClear={() => setSearch('')}
         />
@@ -64,7 +65,7 @@ const Movie = () => {
           </>
         ) : null}
       </FlexLayout>
-      <FlexLayout wrap="wrap" padding="0 16px 0 0">
+      <FlexLayout wrap="wrap">
         {!data.length && (
           <Typography margin="0 16px">No movies found with keyword "{qsSearch}"</Typography>
         )}
