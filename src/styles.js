@@ -9,10 +9,6 @@ injectGlobal`
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
   }
-
-  *::-webkit-scrollbar { 
-    display: none; 
-  }
 `;
 
 export const container = css`
