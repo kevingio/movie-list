@@ -20,6 +20,7 @@ export const movieTitle = css`
 	line-height: 20px;
 	font-weight: 700;
 	margin: 0 0 4px 0;
+	white-space: normal;
 	${txtEllipsis(2)};
 `;
 

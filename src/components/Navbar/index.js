@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <div className={wrapper}>
       {pathname !== '/' ? (
-        <div className={backButtonWrapper} onClick={() => navigate('/')}>
+        <div className={backButtonWrapper} onClick={() => navigate(-1)}>
           <span className={backButton} />
         </div>
       ) : null}
