@@ -1,16 +1,27 @@
 import React from "react";
-import { string, arrayOf, object, func } from 'prop-types';
+import { string, arrayOf, object, func, bool } from 'prop-types';
+import Shimmer from "@components/Shimmer";
 import MovieCard from "../MovieCard";
 
 import Typography from "../Typography";
 import { FlexColumn, FlexLayout } from "../Grid";
+
+const Placeholder = () => {
+  const data = Array(3).fill(true);
+  return data.map((_, index) => (
+    <FlexColumn key={`place-holder-${index}`}>
+      <Shimmer width="180px" height="300px" margin="0 16px 0 0" borderRadius="6px" />
+    </FlexColumn>
+  ))
+};
 
 const MovieList = ({
   title,
   subtitle,
   movies,
   onClickDetail,
-  onClickAll
+  onClickAll,
+  loading
 }) => {
   return (
     <FlexLayout padding="16px 0px" margin="0px 0px 16px 0px" direction="column" background="white">
@@ -38,7 +49,7 @@ const MovieList = ({
         whiteSpace="nowrap"
         padding="8px 0px"
         >
-        {movies.map(item => (
+        {!loading ? movies.map(item => (
           <FlexColumn key={item.id}>
             <MovieCard 
               title={item.title}
@@ -48,7 +59,7 @@ const MovieList = ({
               onClick={() => onClickDetail(item)} width="180px"
             />
           </FlexColumn>
-        ))}
+        )) : <Placeholder />}
         </FlexLayout>
     </FlexLayout>
   )
@@ -59,7 +70,8 @@ MovieList.propTypes = {
   subtitle: string.isRequired,
   movies: arrayOf(object).isRequired,
   onClickAll: func.isRequired,
-  onClickDetail: func.isRequired
+  onClickDetail: func.isRequired,
+  loading: bool.isRequired
 };
 
 export default MovieList;

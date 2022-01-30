@@ -4,11 +4,21 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import useAxios from "@utils/useAxios";
 import MovieContext from "@contexts/MovieContext";
 
+import Shimmer from "@components/Shimmer";
 import MovieCard from "@components/MovieCard";
 import SearchInput from "@components/SearchInput";
 import { FlexLayout, FlexColumn } from "@components/Grid";
 import Typography from "@components/Typography";
 import Button from "@components/Button";
+
+const Placeholder = () => {
+  const data = Array(3).fill(true);
+  return data.map((_, index) => (
+    <FlexColumn width="50%" key={`place-holder-${index}`} margin="0 0 16px 0">
+      <Shimmer height="286px" margin="0 8px" borderRadius="6px" />
+    </FlexColumn>
+  ))
+};
 
 const Movie = () => {
   const navigate = useNavigate();
@@ -80,7 +90,7 @@ const Movie = () => {
           <FlexColumn width="50%" key={item.id} margin="0 0 16px 0">
             <MovieCard title={item.title} year={item.year} poster={item.poster} type={item.type} onClick={handleClickDetail(item)} />
           </FlexColumn>
-        )) : <p>Loading</p>}
+        )) : <Placeholder />}
         {pageInfo.maxPage > 1 && (
           <FlexLayout width="100%" padding="0 16px 16px 16px">
             {page > 1 && (

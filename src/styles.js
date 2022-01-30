@@ -9,6 +9,12 @@ injectGlobal`
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
   }
+
+  @keyframes loading {
+    100% {
+        transform: translateX(100%);
+    }
+  }
 `;
 
 export const container = css`

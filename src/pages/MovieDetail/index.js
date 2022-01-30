@@ -5,10 +5,29 @@ import Swal from 'sweetalert2';
 import Typography from "@components/Typography";
 import Button from "@components/Button";
 import { FlexLayout } from "@components/Grid";
+import Shimmer from "@components/Shimmer";
 
 import useAxios from "@utils/useAxios"
 import { LC_MOVIE_KEY } from "@constants";
 import { movieImage } from './styles';
+
+const Placeholder = () => {
+	return (
+		<>
+			<Shimmer height="450px" />
+			<FlexLayout direction="column" padding="16px">
+				<Shimmer height="20px" margin="0 0 16px 0" />
+				<Shimmer width="50%" height="20px" margin="0 0 16px 0" />
+				<Shimmer width="70%" height="20px" margin="0 0 16px 0" />
+				<Shimmer width="80%"height="20px" margin="0 0 16px 0" />
+				<Shimmer width="50%"height="20px" margin="0 0 16px 0" />
+				<Shimmer width="70%" height="20px" margin="0 0 16px 0" />
+				<Shimmer width="80%"height="20px" margin="0 0 16px 0" />
+				<Shimmer width="50%"height="20px" margin="0 0 16px 0" />
+			</FlexLayout>
+		</>
+	)
+}
 
 const MovieDetail = () => {
 	const { movieID } = useParams();
@@ -81,7 +100,9 @@ const MovieDetail = () => {
 		});
 	};
 
-	return !loading ? (
+	if (loading) return <Placeholder />
+
+	return (
 		<>
 			<img className={movieImage} src={poster} alt={title} />
 			<FlexLayout direction="column" padding="16px">
@@ -120,7 +141,7 @@ const MovieDetail = () => {
 				)}
 			</FlexLayout>
 		</>
-	) : <p>Loading..</p>
+	)
 };
 
 export default MovieDetail;
