@@ -45,7 +45,14 @@ const Movie = () => {
   return (
     <>
       <FlexLayout padding="16px" margin="32px 0 0 0" direction="column">
-        <SearchInput placeholder="Type movie title..." value={search} onChange={e => setSearch(e.target.value)} onSubmit={handleSubmit} />
+        <SearchInput
+          placeholder="Type movie title..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          onClick={handleSubmit}
+          onSubmit={handleSubmit}
+          onClear={() => setSearch('')}
+        />
         {presetMovie.slug === qsSearch ? (
           <>
             <Typography tag="display">

@@ -2,16 +2,17 @@ import { css } from '@emotion/css';
 import styled from '@emotion/styled';
 
 import { txtEllipsis } from '@utils/styles';
+import { N50, boxShadowMain } from '@utils/colors';
 
 export const CardWrapper = styled('div')(props => `
   padding: 8px;
-	border: 1px solid #F7F7F7;
 	box-sizing: border-box;
-	box-shadow: 0px 1px 12px rgba(39, 96, 117, 0.07);
+	box-shadow: ${boxShadowMain};
 	border-radius: 8px;
 	width: ${props.width || '100%'};
 	margin: 0 8px;
 	cursor: pointer;
+	position: relative;
 `);
 
 export const movieTitle = css`
@@ -26,7 +27,7 @@ export const movieSubtitle = css`
 	font-size: 14px;
 	line-height: 18px;
 	line-spacing: 0.2;
-	color: #2f3640;
+	color: ${N50};
 	margin: 0;
 `;
 
@@ -36,4 +37,8 @@ export const movieImage = css`
 	object-fit: cover;
 	border-radius: 6px;
 	margin-bottom: 4px;
+`;
+
+export const chip = css`
+	position: absolute;
 `;

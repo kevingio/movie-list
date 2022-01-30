@@ -16,7 +16,7 @@ const SearchInput = forwardRef((props, ref) => {
 
   return (
     <span className={textFieldContainerCss}>
-      <span className={searchIconCss} />
+      <span className={searchIconCss} onClick={onSubmit} />
       <TextField
         search
         ref={ref}

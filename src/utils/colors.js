@@ -30,4 +30,4 @@ export const fullBlack = '#000000';
 export const secondary = '#6464E7';
 export const primary = R50;
 
-export const lineGray = 'rgba(128, 128, 128, 0.2)';
+export const boxShadowMain = 'rgb(0 0 0 / 12%) 0px 1px 6px 0px';

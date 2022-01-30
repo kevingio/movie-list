@@ -17,7 +17,6 @@ const useAxios = ({
         page
       }
     });
-    console.log('res', result);
     const data = result.data;
     if (searchType === 'keyword') {
       let normalizedData = [];
@@ -27,6 +26,7 @@ const useAxios = ({
           title: item.Title,
           year: item.Year,
           poster: item.Poster,
+          type: item.Type,
         }));
       }
       setData(normalizedData);

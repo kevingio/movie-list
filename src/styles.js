@@ -1,5 +1,7 @@
 import { css } from '@emotion/css';
-import { injectGlobal } from '@emotion/css'
+import { injectGlobal } from '@emotion/css';
+
+import { N2, N5 } from '@utils/colors';
 
 injectGlobal`
   body {
@@ -10,7 +12,7 @@ injectGlobal`
 `;
 
 export const container = css`
-  background: #dcdde1;
+  background: ${N5};
 `;
 
 export const mobileContainer = css`
@@ -19,5 +21,5 @@ export const mobileContainer = css`
   display: block;
   margin: auto;
   min-height: 100vh;
-  background: #f5f6fa;
+  background: ${N2};
 `;

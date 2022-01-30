@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { N0, N5, N10, N30, R50, R70, fullBlack } from "@utils/colors";
+import { N0, N5, N10, N30, R50, R70, fullBlack, secondary } from "@utils/colors";
 
 const backgroundMap = (props) => {
   if (props.disabled) {
@@ -25,6 +25,19 @@ const backgroundMap = (props) => {
       &:active {
         background: ${R70};
         border: 1px solid ${R70};
+      };
+  `;
+  }
+
+  if (props.secondary) {
+    return `
+      background: ${secondary};
+      color: ${N0};
+      border: 1px solid ${secondary};
+
+      &:active {
+        background: ${secondary};
+        border: 1px solid ${secondary};
       };
   `;
   }

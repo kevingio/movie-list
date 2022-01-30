@@ -6,6 +6,7 @@ import { CardWrapper, movieTitle, movieSubtitle, movieImage } from "./styles";
 const MovieCard = ({
   title,
   poster,
+  type,
   year,
   onClick,
   width,
@@ -17,7 +18,7 @@ const MovieCard = ({
         {title}
       </h2>
       <p className={movieSubtitle}>
-        {year}
+        {type} ({year})
       </p>
     </CardWrapper>
   );
@@ -27,6 +28,7 @@ MovieCard.propTypes = {
   title: string.isRequired,
   poster: string.isRequired,
   year: string.isRequired,
+  type: string.isRequired,
   onClick: func.isRequired,
   width: string.isRequired
 };

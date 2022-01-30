@@ -10,3 +10,5 @@ export const masterMovies = [
 		subtitle: 'Batman is a superhero who appears in American comic books published by DC Comics.'
 	},
 ];
+
+export const LC_MOVIE_KEY = 'tix-studio';
