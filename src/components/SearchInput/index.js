@@ -26,7 +26,7 @@ const SearchInput = forwardRef((props, ref) => {
         onKeyDown={handleKeyDown}
         {...sanitizedProps}
       />
-      {onClear && ref?.current?.value && <span className={closeIconCss} onClick={onClear} />}
+      {onClear && props.value && <span className={closeIconCss} onClick={onClear} />}
     </span>
   );
 });

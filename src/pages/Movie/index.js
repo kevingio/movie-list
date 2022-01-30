@@ -8,17 +8,18 @@ import MovieCard from "@components/MovieCard";
 import SearchInput from "@components/SearchInput";
 import { FlexLayout, FlexColumn } from "@components/Grid";
 import Typography from "@components/Typography";
+import Button from "@components/Button";
 
 const Movie = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { presetMovie } = useContext(MovieContext);
-  const [page] = useState(1);
+  const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const qsSearch = searchParams.get('search');
   const didMountRef = useRef();
 
-  const { data, loading } = useAxios({
+  const { data, loading, pageInfo } = useAxios({
     keyword: qsSearch || presetMovie.slug,
     page
   });
@@ -29,6 +30,7 @@ const Movie = () => {
 
   const handleSubmit = () => {
     searchParams.set('search', search);
+    setPage(1);
     navigate({
       search: searchParams.toString()
     })
@@ -65,8 +67,13 @@ const Movie = () => {
           </>
         ) : null}
       </FlexLayout>
-      <FlexLayout wrap="wrap">
-        {!data.length && (
+
+      <Typography margin="0 16px">
+        Showing {pageInfo.min} - {pageInfo.max} of {pageInfo.total} results
+      </Typography>
+
+      <FlexLayout wrap="wrap" margin="16px 0 0 0">
+        {!loading && !data.length && (
           <Typography margin="0 16px">No movies found with keyword "{qsSearch}"</Typography>
         )}
         {!loading ? data.map(item => (
@@ -74,6 +81,20 @@ const Movie = () => {
             <MovieCard title={item.title} year={item.year} poster={item.poster} type={item.type} onClick={handleClickDetail(item)} />
           </FlexColumn>
         )) : <p>Loading</p>}
+        {pageInfo.maxPage > 1 && (
+          <FlexLayout width="100%" padding="0 16px 16px 16px">
+            {page > 1 && (
+              <FlexColumn width="100%" margin="0 16px 0 0">
+                <Button outline block secondary onClick={() => setPage(prevPage => prevPage - 1)}>Prev</Button>
+              </FlexColumn>
+            )}
+            {pageInfo.maxPage > page && (
+              <FlexColumn width="100%">
+                <Button outline block primary onClick={() => setPage(prevPage => prevPage + 1)}>Next</Button>
+              </FlexColumn>
+            )}
+          </FlexLayout>
+        )}
       </FlexLayout>
     </>
   )
