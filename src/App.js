@@ -7,6 +7,7 @@ import {
 import Navbar from '@components/Navbar';
 import Home from '@pages/Home';
 import Movie from "@pages/Movie";
+import MovieDetail from "@pages/MovieDetail";
 
 import { MovieContextProvider } from '@contexts/MovieContext';
 
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/movies" element={<Movie />} />
+              <Route path="/movies/:movieID" element={<MovieDetail />} />
             </Routes>
           </Router>
         </MovieContextProvider>

@@ -10,8 +10,8 @@ import MovieList from "@components/MovieList";
 const HomeComponent = () => {
   const navigate = useNavigate();
   const { setPresetMovie } = useContext(MovieContext);
-  const { data: batmanMovies, loading: batmanLoading } = useAxios('batman');
-  const { data: supermanMovies, loading: supermanLoading } = useAxios('superman');
+  const { data: batmanMovies, loading: batmanLoading } = useAxios({ keyword: 'batman' });
+  const { data: supermanMovies, loading: supermanLoading } = useAxios({ keyword: 'superman' });
 
   const handleClickAll = (item) => {
     setPresetMovie(item);
