@@ -2,6 +2,7 @@ import React from "react";
 import { string, func } from 'prop-types';
 
 import { CardWrapper, movieTitle, movieSubtitle, movieImage } from "./styles";
+import Button from "@components/Button";
 
 const MovieCard = ({
   title,
@@ -9,17 +10,21 @@ const MovieCard = ({
   type,
   year,
   onClick,
+  onActionClick,
   width,
 }) => {
   return (
-    <CardWrapper width={width} onClick={onClick}>
-      <img src={poster} className={movieImage} alt={title} />
-      <h2 className={movieTitle}>
-        {title}
-      </h2>
-      <p className={movieSubtitle}>
-        {type} ({year})
-      </p>
+    <CardWrapper width={width}>
+      <div onClick={onClick}>
+        <img src={poster} className={movieImage} alt={title} />
+        <h2 className={movieTitle}>
+          {title}
+        </h2>
+        <p className={movieSubtitle}>
+          {type} ({year})
+        </p>
+      </div>
+      {onActionClick ? <Button dense secondary block onClick={onActionClick}>Remove</Button> : null}
     </CardWrapper>
   );
 };
@@ -30,11 +35,13 @@ MovieCard.propTypes = {
   year: string.isRequired,
   type: string.isRequired,
   onClick: func.isRequired,
+  onActionClick: func,
   width: string.isRequired
 };
 
 MovieCard.defaultProps = {
-  width: '100%'
+  width: '100%',
+  onActionClick: null
 };
 
 export default MovieCard;

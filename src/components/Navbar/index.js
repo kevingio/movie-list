@@ -19,9 +19,11 @@ const Navbar = () => {
         <span className={navbarTitle}>
           TIX Studio XXII
         </span>
-        <span className={chipMyList} onClick={() => navigate('/my-movies')}>
-          My List
-        </span>
+        {pathname !== '/my-movies' ? (
+          <span className={chipMyList} onClick={() => navigate('/my-movies')}>
+            My List
+          </span>
+        ) : null}
       </FlexLayout>
     </div>
   );

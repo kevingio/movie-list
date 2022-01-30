@@ -62,7 +62,8 @@ const MovieDetail = () => {
 			title: 'Success',
 			text: `${title} removed from your list`,
 			timer: 2000,
-			buttons: false,
+			showCancelButton: false,
+			showConfirmButton: false
 		});
 	};
 	const saveToList = () => {
@@ -75,7 +76,8 @@ const MovieDetail = () => {
 			title: 'Success',
 			text: `${title} added to your list`,
 			timer: 2000,
-			buttons: false,
+			showCancelButton: false,
+			showConfirmButton: false
 		});
 	};
 
