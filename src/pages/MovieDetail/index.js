@@ -110,11 +110,11 @@ const MovieDetail = () => {
 					<b>Release Date</b> : {releasedDate} 
 				</Typography>
 				{isInMyFav ? (
-					<Button width="200px" secondary onClick={removeFromList}>
+					<Button block secondary onClick={removeFromList}>
 						Remove from my list
 					</Button>
 				): (
-					<Button width="200px" primary onClick={saveToList}>
+					<Button block primary onClick={saveToList}>
 						Save
 					</Button>
 				)}
